@@ -16,3 +16,9 @@ To run and get an interactive Tcl prompt:
 
     docker run -it --rm efrecon/tcl 
 
+# Running your own scripts
+
+This image exports /tcl as a volume and arranges to give that
+directory as an additional location when looking for packages.  This
+means that you should be able to mount local directories onto /tcl to
+run your own code within the container.

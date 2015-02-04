@@ -29,6 +29,11 @@ RUN apt-get install -y tcl8.6 \
 			libpgtcl \
 			libsqlite-tcl \
 			mysqltcl \
+			tcl8.6-tdbc \
+			tcl8.6-tdbc-mysql \
+			tcl8.6-tdbc-odbc \
+			tcl8.6-tdbc-postgres \
+			tcl8.6-tdbc-sqlite3 \
 			itcl3 \
 			critcl \
 			xotcl \
@@ -37,6 +42,8 @@ RUN apt-get install -y tcl8.6 \
            
 # Arrange for a decent tclreadline prompt in interactive mode
 COPY tclshrc /root/.tclshrc
+
+VOLUME /tcl
 
 # And make the core bare tclsh the entrypoint as the default
 ENTRYPOINT ["tclsh8.6"]
