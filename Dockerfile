@@ -43,7 +43,14 @@ RUN apt-get install -y tcl8.6 \
 # Arrange for a decent tclreadline prompt in interactive mode
 COPY tclshrc /root/.tclshrc
 
-VOLUME /tcl
+# Export two volumes, one for tcl code and one for data, just in case.
+VOLUME /opt/tcl
+VOLUME /opt/data
+
+# Make sure code put into the special tcl volume can lazily be filled
+# with packages 
+ENV TCLLIBPATH /opt/tcl /opt/tcl/lib
+
 
 # And make the core bare tclsh the entrypoint as the default
 ENTRYPOINT ["tclsh8.6"]

@@ -18,7 +18,11 @@ To run and get an interactive Tcl prompt:
 
 # Running your own scripts
 
-This image exports /tcl as a volume and arranges to give that
-directory as an additional location when looking for packages.  This
-means that you should be able to mount local directories onto /tcl to
-run your own code within the container.
+This image exports `/opt/tcl` as a volume and arranges to give that
+directory and its sub-directory `lib` as additional locations when
+looking for packages.  This means that you should be able to mount
+local directories onto `/opt/tcl` to run your own code within the
+container.
+
+Additionally, the image exports `/opt/data` to place random data that
+you might wish to access from within the container.

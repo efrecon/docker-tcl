@@ -2,6 +2,3 @@ if {$tcl_interactive} {
     package require tclreadline 
     ::tclreadline::Loop
 }
-
-# Arrange to access packages that would be placed under the exported volume
-lappend auto_path /tcl
