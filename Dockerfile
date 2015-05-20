@@ -6,9 +6,9 @@ MAINTAINER Emmanuel Frecon <emmanuel@sics.se>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Update underlying ubuntu image and all necessary packages.
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get install -y tcl8.6 \
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y tcl8.6 \
 			tcllib \
 			tcl-thread \
 			tcl-tclreadline \
@@ -38,7 +38,8 @@ RUN apt-get install -y tcl8.6 \
 			critcl \
 			xotcl \
 			tclxapian \
-			libtcl-chiark-1
+			libtcl-chiark-1 && \
+    apt-get clean
            
 # Arrange for a decent tclreadline prompt in interactive mode
 COPY tclshrc /root/.tclshrc
@@ -50,7 +51,6 @@ VOLUME /opt/data
 # Make sure code put into the special tcl volume can lazily be filled
 # with packages 
 ENV TCLLIBPATH /opt/tcl /opt/tcl/lib
-
 
 # And make the core bare tclsh the entrypoint as the default
 ENTRYPOINT ["tclsh8.6"]
